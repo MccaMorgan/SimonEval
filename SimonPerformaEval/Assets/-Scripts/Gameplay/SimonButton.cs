@@ -2,14 +2,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manager for the user input virtual button
+/// </summary>
 public class SimonButton : MonoBehaviour
 {
     // Tone that sounds when this button is pressed, as well as when randomly selected in the sequence
     [SerializeField] private AudioClip _buttonTone = null;
-    
+
     // Reference to the game manager in this scene
     private GameManager _gameManager;
-    
+
     // The color this button was at start so it can be reset after flashing
     private Color _startingButtonColor;
 
@@ -18,7 +21,7 @@ public class SimonButton : MonoBehaviour
 
     // Image component attached to this object
     private Image _attachedImageComponent;
-    
+
 
     /// <summary>
     /// Awake
@@ -26,10 +29,10 @@ public class SimonButton : MonoBehaviour
     private void Awake()
     {
         _gameManager = FindObjectOfType<GameManager>();
-        
+
         _attachedImageComponent = GetComponent<Image>();
         _startingButtonColor = _attachedImageComponent.color;
-        
+
         _attachedAudioSource = GetComponent<AudioSource>();
         _attachedAudioSource.clip = _buttonTone;
     }
